@@ -12,7 +12,16 @@
 <body>
   <h3>ストップウォッチ</h3>
 
-  <!-- ここに記述していきましょう！ -->
+  <div class="Timer">
+    <p><span id="hour">0</span>:<span id="minute">0</span>:<span id="second">0</span>:<span id="mili-second">0</span>
+    </p>
+  </div>
+
+  <div class="command-button">
+    <button type="button" id="start-button" name="スタート">スタート</button>
+    <button type="button" id="stop-button" name="ストップ" disabled>ストップ</button>
+    <button type="button" id="reset-button" name="リセット">リセット</button>
+  </div>
 
   <script src="main.js"></script>
 </body>
