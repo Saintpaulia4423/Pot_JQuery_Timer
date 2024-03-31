@@ -1,51 +1,42 @@
-window.addEventListener("DOMContentLoaded", function () {
-    const start_button = this.document.getElementById("start-button");
-    const stop_button = this.document.getElementById("stop-button");
-    const reset_button = this.document.getElementById("reset-button");
-    const hour_time = this.document.getElementById("hour");
-    const minute_time = this.document.getElementById("minute");
-    const second_time = this.document.getElementById("second");
-    const milisecond_time = this.document.getElementById("mili-second");
+$(document).ready(function () {
     let flag = 0;
     let hour = 0, minute = 0, second = 0, miliSecond = 0;
 
 
     setInterval(() => {
+        setTimerCount();
         if (flag === 1) {
             miliSecond += 1;
         }
-        setTimerCount();
     }, 100);
-    // setInterval(() => {
-    //     console.log(hour + "h" + minute + "m" + second + "s" + miliSecond + "milis");
-    // }, 1000);
+    setInterval(() => {
+        console.log(hour + "h" + minute + "m" + second + "s" + miliSecond + "milis");
+    }, 1000);
 
-    start_button.addEventListener("click", function () {
+    $("#start-button").click(function () {
         flag = 1;
         if (flag === 0) {
             resetTime();
         }
-        // console.log("start");
-        start_button.disabled = !start_button.disabled;
-        stop_button.disabled = !stop_button.disabled;
+        console.log("start");
+        $("#start-button").prop("disabled", !$("#start-button").prop("disabled"));
+        $("#stop-button").prop("disabled", !$("#stop-button").prop("disabled"));
     });
 
-    stop_button.addEventListener("click", function () {
-        stop_button
+    $("#stop-button").click(function () {
         flag = 2;
-        // console.log("stop");
-        start_button.disabled = !start_button.disabled;
-        stop_button.disabled = !stop_button.disabled;
-    })
+        console.log("stop");
+        $("#start-button").prop("disabled", !$("#start-button").prop("disabled"));
+        $("#stop-button").prop("disabled", !$("#stop-button").prop("disabled"));
+    });
 
-
-    reset_button.addEventListener("click", function () {
+    $("#reset-button").click(function () {
         resetTime();
-        // console.log("reset");
+        console.log("reset");
     });
 
     function resetTime() {
-        // console.log("time_reset");
+        console.log("time_reset");
         hour = 0;
         minute = 0;
         second = 0;
@@ -53,12 +44,12 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     function setTimerCount() {
-        // console.log("set_time");
+        console.log("set_time");
         calTime();
-        hour_time.textContent = hour;
-        minute_time.textContent = minute;
-        second_time.textContent = second;
-        milisecond_time.textContent = miliSecond;
+        $("#hour").text(hour);
+        $("#minute").text(minute);
+        $("#second").text(second);
+        $("#mili-second").text(miliSecond);
     }
 
     function calTime() {
